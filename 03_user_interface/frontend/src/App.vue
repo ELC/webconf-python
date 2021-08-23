@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Button from './components/Button'
 import Main from './views/Main'
 
 export default {
@@ -28,6 +29,7 @@ export default {
     },
   },
   components: {
+    Button,
     Main,
   },
   data() {
