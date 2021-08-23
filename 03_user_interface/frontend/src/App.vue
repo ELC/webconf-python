@@ -1,24 +1,34 @@
 <template>
   <div class="container">
-    <Header
-      @toggle-add-task="toggleAddTask"
-      title="Task Tracker"
-      :showAddTask="showAddTask"
-    />
-    <router-view :showAddTask="showAddTask"></router-view>
-    <Footer />
+    <header>
+      <h1>Task Tracker</h1>
+      <Button
+        @btn-click="toggleAddTask()"
+        :text="showAddTask ? 'Close' : 'Add'"
+        :color="showAddTask ? 'red' : 'green'"
+      />
+    </header>
+
+    <Main :showAddTask="showAddTask" />
+    <footer>
+      <p>Copyright &copy; 2021</p>
+    </footer>
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Main from './views/Main'
 
 export default {
   name: 'App',
+  props: {
+    showAddTask: {
+      type: Boolean,
+      default: false
+    },
+  },
   components: {
-    Header,
-    Footer,
+    Main,
   },
   data() {
     return {
@@ -44,6 +54,13 @@ export default {
 
 body {
   font-family: 'Poppins', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -81,5 +98,10 @@ body {
 .btn-block {
   display: block;
   width: 100%;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
 }
 </style>
